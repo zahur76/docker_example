@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   db:
+    container_name: postgres_container
     image: postgres
     environment:
       - POSTGRES_DB=postgres
@@ -9,6 +10,17 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - ./pgdata:/var/lib/posgresql/data
+    ports:
+      - '5432:5432'
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
   dockerexample:
     image: dockerexample
     volumes:
