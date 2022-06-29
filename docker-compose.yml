@@ -1,6 +1,9 @@
 version: '3.4'
 
 services:
+  redis:
+    image: redis:alpine
+    container_name: redis_exmaple
   db:
     container_name: postgres_container
     image: postgis/postgis
@@ -22,6 +25,7 @@ services:
     ports:
       - "5050:80"
   dockerexample:
+    container_name: zahur_docker
     image: dockerexample
     volumes:
       - .:/djangoexample
