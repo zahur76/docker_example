@@ -13,6 +13,9 @@ ENV PYTHONUNBUFFERED=1
 COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
+RUN apt-get update &&\
+    apt-get install -y binutils libproj-dev gdal-bin
+
 WORKDIR /app
 COPY . /app
 
